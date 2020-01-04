@@ -30,8 +30,6 @@
 			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -41,6 +39,25 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>1.7.0</version>
+				<configuration>
+					<container>
+						<jvmFlags>
+							<jvmFlag>-Xms256m</jvmFlag>
+							<jvmFlag>-Xmx512m</jvmFlag>
+							<jvmFlag>-Xdebug</jvmFlag>
+							<jvmFlag>-XX:+UnlockExperimentalVMOptions</jvmFlag>
+							<jvmFlag>-XX:+UseCGroupMemoryLimitForHeap</jvmFlag>
+							<jvmFlag>-Djava.security.egd=file:/dev/./urandom</jvmFlag>
+						</jvmFlags>
+						<format>OCI</format>
+						<useCurrentTimestamp>true</useCurrentTimestamp>
+					</container>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
