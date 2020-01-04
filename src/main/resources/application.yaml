@@ -1,0 +1,8 @@
+spring:
+  http:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+
+upload:
+  path: ./uploaded_files
