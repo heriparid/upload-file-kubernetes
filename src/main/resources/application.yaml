@@ -1,8 +1,22 @@
+## default connection pool
 spring:
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+## PostgreSQL
+    url: jdbc:postgresql://192.168.0.113:5432/simple_db
+    username: user
+    password: password
+  jpa:
+    properties.hibernate.jdbc.lob.non_contextual_creation: true
+    hibernate:
+      ddl-auto: update
+## File Upload Policy
   http:
     multipart:
       max-file-size: 2MB
       max-request-size: 2MB
-
+## File Upload Location
 upload:
   path: ./uploaded_files

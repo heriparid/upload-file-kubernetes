@@ -1,0 +1,17 @@
+apiVersion: skaffold/v1beta15
+kind: Config
+build:
+  tagPolicy:
+    sha256: {}
+  # defines where to find the code at build time and where to push the resulting image
+  artifacts:
+    - image: upload-file
+      # To learn more about how Jib builds Java containers visit
+      # https://github.com/GoogleContainerTools/jib
+      jib: {}
+
+# defines the Kubernetes manifests to deploy on each run
+deploy:
+  kubectl:
+    manifests:
+    - ./kubernetes-manifests/**.yaml
