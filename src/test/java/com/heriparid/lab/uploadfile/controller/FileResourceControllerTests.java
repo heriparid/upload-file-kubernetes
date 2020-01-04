@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.io.InputStream;
 
 @RunWith(MockitoJUnitRunner.class)
-public class FileUploadControllerTests {
+public class FileResourceControllerTests {
 
     private InputStream inputStream;
     private MockMvc mockMvc;
@@ -29,7 +29,7 @@ public class FileUploadControllerTests {
     private IStorageService storageService;
 
     @InjectMocks
-    private FileUploadController fileUploadController = new FileUploadController();
+    private FileResourceController fileUploadController = new FileResourceController();
 
     @Before
     public void init(){
@@ -55,10 +55,10 @@ public class FileUploadControllerTests {
                 )
                 .andExpect(MockMvcResultMatchers.status().is(200)).andReturn();
 
-        Mockito.verify(storageService, Mockito.times(1)).uploadFile(mockMultipartFile);
+        Mockito.verify(storageService, Mockito.times(1)).storeFile(mockMultipartFile);
 
         Assert.assertEquals(200, result.getResponse().getStatus());
         Assert.assertNotNull(result.getResponse().getContentAsString());
-        Assert.assertEquals("upload-file", result.getResponse().getContentAsString());
+        // TODO assert orginal-file given name as same as result uploaded file
     }
 }
