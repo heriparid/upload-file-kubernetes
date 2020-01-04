@@ -15,6 +15,8 @@ import java.util.Enumeration;
  *
  * This class should be used as a Singleton.
  * Make sure that you create and reuse a Single instance of SequenceGenerator per node in your distributed system cluster.
+ *
+ * reference: https://www.callicoder.com/distributed-unique-id-sequence-number-generator/
  */
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
